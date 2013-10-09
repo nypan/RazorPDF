@@ -12,18 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Xml;
-using System.Xml.Linq;
 using iTextSharp.text;
-using iTextSharp.text.html;
 using iTextSharp.text.pdf;
-using iTextSharp.text.xml;
+using iTextSharp.tool.xml;
 
 namespace RazorPDF
 {
@@ -39,45 +34,35 @@ namespace RazorPDF
         public void Render(ViewContext viewContext, TextWriter writer)
         {
             // generate view into string
-            var sb = new System.Text.StringBuilder();
-            TextWriter tw = new System.IO.StringWriter(sb);
+            var sb = new StringBuilder();
+            TextWriter tw = new StringWriter(sb);
             _result.View.Render(viewContext, tw);
             var resultCache = sb.ToString();
+            TextReader reader = new StringReader(resultCache);
 
             // detect itext (or html) format of response
-            XmlParser parser;
-            using (var reader = GetXmlReader(resultCache))
-            {
-                while (reader.Read() && reader.NodeType != XmlNodeType.Element)
-                {
-                    // no-op
-                }
-
-                if (reader.NodeType == XmlNodeType.Element && reader.Name == "itext")
-                    parser = new XmlParser();
-                else
-                    parser = new HtmlParser();
-            }
+            
+            
 
             // Create a document processing context
             var document = new Document();
-            document.Open();
+            
 
             // associate output with response stream
             var pdfWriter = PdfWriter.GetInstance(document, viewContext.HttpContext.Response.OutputStream);
-            pdfWriter.CloseStream = false;
+            //pdfWriter.CloseStream = false;
 
             // this is as close as we can get to being "success" before writing output
             // so set the content type now
             viewContext.HttpContext.Response.ContentType = "application/pdf";
 
             // parse memory through document into output
-            using (var reader = GetXmlReader(resultCache))
-            {
-                parser.Go(document, reader);
-            }
 
+            document.Open();
+            XMLWorkerHelper.GetInstance().ParseXHtml(pdfWriter, document, reader);
+            document.Close();
             pdfWriter.Close();
+
         }
 
         private static XmlTextReader GetXmlReader(string source)
