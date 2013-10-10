@@ -1,23 +1,52 @@
-﻿@model  List<SampleRazorPdf.Controllers.HomeController.Person>
+﻿@model  List<SampleRazorPDF.Controllers.HomeController.Person>
 @{
-    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+    Layout = "~/Views/Shared/_PdfHtmlLayout.cshtml";
 }
 
     <h1>@ViewBag.Title</h1>
-    <table style="width:100% ;font-size:12px;">
-            <tr>
-                <th>Name</th>
-                <th>City</th>
-                <th>Title</th>
+    <table style="width:100% ;border-collapse:collapse;font-size:.85em;">
+            <tr style="border-bottom:1px solid #fff; ">
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;">Name</th>
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;">City</th>
             </tr>
 
             @foreach (var p in Model)
             {
-                <tr>
-                    <td>@p.Name</td>
-                    <td>@p.City</td>
-                    <td></td>
+                <tr style="border-bottom:1px solid #fff; ">
+                    <td style="padding:.5em;text-align:left;border-right:1px solid #fff;">@p.Name</td>
+                    <td style="padding:.5em;text-align:left;border-right:1px solid #fff;">@p.City</td>
                 </tr>
             }
+    </table>
+
+    <h3>Furniture</h3>
+    <table style="width:100% ;border-collapse:collapse;font-size:.85em;">
+            <tr style="border-bottom:1px solid #fff; ">
+                
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;width:20px">Name</th>
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;width:20px">Type</th>
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;width:14px;text-align:right;">Price</th>
+                <th style="font-weight:bold;background-color:#ddd;padding:.5em;text-align:left;border-right:1px solid #fff;width:14px;text-align:right;">Number in stock</th>
+            </tr>
+            <tr>
+                <td><a href="http://www.ikea.com/se/sv/catalog/products/50227534/">KARLSFORS</a></td>
+                <td>Armchair</td>
+                <td style="text-align:right;">$750</td>
+                <td style="text-align:right;">10 000</td>
+            </tr>
+            <tr>
+                <td><a href="http://www.ikea.com/se/sv/catalog/products/10222406/">INGATORP</a></td>
+                <td>Dining table</td>
+                <td style="text-align:right;">$633</td>
+                <td style="text-align:right;">5 000</td>
+            </tr>
+            <tr>
+                <td><a href="http://www.ikea.com/se/sv/catalog/products/S49898261/">BILLY</a></td>
+                <td>Bookshelf</td>
+                <td style="text-align:right;">$548</td>
+                <td style="text-align:right;">4 000</td>
+            </tr>
+            
+
     </table>
     

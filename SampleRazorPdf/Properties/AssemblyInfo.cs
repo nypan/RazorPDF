@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SampleRazorPdf")]
+[assembly: AssemblyTitle("SampleRazorPDF")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SampleRazorPdf")]
+[assembly: AssemblyProduct("SampleRazorPDF")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("722fc672-5b78-47d8-a0e6-678377716c17")]
+[assembly: Guid("2983fa01-8a61-4a09-869f-fbebbc40f1c6")]
 
 // Version information for an assembly consists of the following four values:
 //

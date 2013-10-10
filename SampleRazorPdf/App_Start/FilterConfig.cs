@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace SampleRazorPdf
+namespace SampleRazorPDF
 {
     public class FilterConfig
     {
